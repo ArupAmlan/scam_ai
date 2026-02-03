@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "Scam Guard for WhatsApp Web",
+  "version": "0.1.0",
+  "description": "Highlights potentially scammy messages in WhatsApp Web and shows safety advice.",
+  "permissions": [
+    "scripting",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "https://web.whatsapp.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://web.whatsapp.com/*"
+      ],
+      "js": [
+        "whatsapp-content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}
+
