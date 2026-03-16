@@ -1,25 +1,39 @@
 {
   "manifest_version": 3,
-  "name": "Scam Guard for WhatsApp Web",
-  "version": "0.1.0",
-  "description": "Highlights potentially scammy messages in WhatsApp Web and shows safety advice.",
+  "name": "Scam Detector",
+  "version": "1.0",
+  "description": "Detect scams in WhatsApp and Email messages",
   "permissions": [
-    "scripting",
-    "activeTab"
+    "activeTab",
+    "storage"
   ],
   "host_permissions": [
-    "https://web.whatsapp.com/*"
+    "https://web.whatsapp.com/*",
+    "https://mail.google.com/*"
   ],
   "content_scripts": [
     {
-      "matches": [
-        "https://web.whatsapp.com/*"
-      ],
-      "js": [
-        "whatsapp-content.js"
-      ],
+      "matches": ["https://web.whatsapp.com/*"],
+      "js": ["whatsapp-content.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["https://mail.google.com/*"],
+      "js": ["email-content.js"],
       "run_at": "document_idle"
     }
-  ]
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  }
 }
-
